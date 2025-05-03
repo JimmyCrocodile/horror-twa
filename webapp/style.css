@@ -1,0 +1,141 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', Courier, monospace; /* Или другой моноширинный шрифт */
+    background-color: #000;
+    color: #ccc; /* Тусклый белый/серый */
+    overflow: hidden; /* Убрать скроллбары */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* Эффект помех через псевдоэлемент или изображение */
+    position: relative;
+}
+
+/* Анимация помех (простой вариант с CSS) */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXV ચોદ*****REJECTED'); /* Простая текстура шума */
+    opacity: 0.05; /* Настроить силу эффекта */
+    pointer-events: none;
+    animation: static 0.1s linear infinite;
+    z-index: -1;
+}
+
+@keyframes static {
+    0% { transform: translate(0, 0); }
+    10% { transform: translate(-2px, -2px); }
+    20% { transform: translate(2px, 2px); }
+    /* ... больше шагов для хаотичности ... */
+    100% { transform: translate(0, 0); }
+}
+
+
+#preloader {
+    font-size: 1.5em;
+    color: #555;
+}
+
+#game-container {
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    padding: 20px;
+    position: relative; /* Для позиционирования оверлеев */
+}
+
+.hidden {
+    display: none;
+}
+
+#text-display {
+    min-height: 100px; /* Чтобы контейнер не схлопывался */
+    font-size: 1.2em;
+    line-height: 1.6;
+    white-space: pre-wrap; /* Сохранять переносы строк */
+    color: #ddd; /* Чуть ярче фона */
+    margin-bottom: 30px;
+    transition: opacity 0.5s ease-out; /* Плавное исчезновение/появление */
+}
+
+#text-display span { /* Для анимации букв */
+    opacity: 0;
+    transition: opacity 0.1s ease-in;
+}
+#text-display span.visible {
+    opacity: 1;
+}
+#text-display span.erasing {
+    opacity: 0;
+    transition: opacity 0.05s ease-out; /* Быстрое стирание */
+}
+
+
+#button-container {
+    min-height: 50px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    opacity: 0; /* Изначально невидимы */
+    transition: opacity 0.5s ease-in 0.5s; /* Появляются с задержкой после текста */
+}
+
+#button-container.visible {
+    opacity: 1;
+}
+
+
+button {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: transparent;
+    border: 1px solid #555;
+    color: #999;
+    padding: 10px 25px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0; /* Скрыты по умолчанию внутри контейнера */
+    transform: translateY(10px);
+    pointer-events: none; /* Не кликабельны пока невидимы */
+}
+
+#button-container.visible button {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto; /* Кликабельны */
+    /* Задержка появления для каждой кнопки */
+    transition: opacity 0.4s ease-out 0.2s, transform 0.4s ease-out 0.2s;
+}
+#button-container.visible button:last-child {
+     transition-delay: 0.4s; /* Вторая кнопка появляется чуть позже */
+}
+
+
+button:hover {
+    background-color: #333;
+    color: #eee;
+    border-color: #888;
+}
+
+button:active {
+    background-color: #555;
+}
+
+/* Эффект глюка */
+#glitch-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(255, 0, 0, 0.1); /* Красный оттенок */
+    /* Можно добавить анимацию смещения, линий и т.д. */
+    z-index: 10;
+    pointer-events: none;
+    animation: glitch-blink 0.3s linear 3; /* Моргнуть 3 раза */
+}
+
+@keyframes glitch-blink {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
