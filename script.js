@@ -11,10 +11,10 @@ const glitchOverlay = document.getElementById('glitch-overlay');
 
 // Звуки (предзагрузка)
 const sounds = {
-    type: new Audio('assets/audio/type.mp3'),
-    erase: new Audio('assets/audio/erase.mp3'), // Опционально
-    ambient: new Audio('assets/audio/ambient.mp3'),
-    scare1: new Audio('assets/audio/scare1.mp3'),
+    type: new Audio('webapp/assets/audio/type.mp3'),
+    erase: new Audio('webapp/assets/audio/erase.mp3'), // Опционально
+    ambient: new Audio('webapp/assets/audio/ambient.mp3'),
+    scare1: new Audio('webapp/assets/audio/scare1.mp3'),
     // ... другие звуки
 };
 

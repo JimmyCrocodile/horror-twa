@@ -9,9 +9,9 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # ВАШ ТОКЕН БОТА
-BOT_TOKEN = 'YOUR_BOT_TOKEN'
+BOT_TOKEN = '7449411219:AAGgWfnxLfiK_Wv7MSJGqLJyhck7-NKkyJM'
 # ВАЖНО: URL вашего веб-приложения (должен быть HTTPS!)
-WEB_APP_URL = 'https://your-username.github.io/your-repo-name/' # Пример для GitHub Pages
+WEB_APP_URL = 'https://jimmycrocodile.github.io/horror-twa//' # Пример для GitHub Pages
 
 def start(update: Update, context: CallbackContext) -> None:
     """Отправляет приветствие и кнопку для запуска игры."""
